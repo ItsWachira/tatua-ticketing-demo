@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Tatua Ticket System</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="assets/media/ticket-icon.png" alt="Tatua Logo" class="logo-icon">
+                <h1 class="title">Tatua</h1>
+            </div>
+            <nav>
+                <button id="showForm" class="nav-btn active">Raise Ticket</button>
+                <button id="showList" class="nav-btn">Tickets List</button>
+            </nav>
+            <div class="storage-selector">
+                <label>Storage Type:</label>
+                <select id="storageType" class="form-control">
+                    <option value="local" selected>Local Storage</option>
+                    <option value="encrypted">Encrypted Storage</option>
+                    <option value="session">Session Storage</option>
+                    <option value="memory">Memory Storage</option>
+                </select>
+            </div>
+        </header>
+    
+        
+        
+        <section id="raiseTicketView" class="content">
+            <p class="form-intro">Have any enquiries? Fill this form and we will get back to you as soon as possible</p>
+            
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <select id="subject" class="form-control" required>
+                        <option value="" selected disabled>Select a subject</option>
+                        <option value="Technical Issue">Technical Issue</option>
+                        <option value="Billing Question">Billing Question</option>
+                        <option value="Feature Request">Feature Request</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Contact:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="preferredContact" id="contactEmail" value="email" checked>
+                            <span class="radio-custom selected" data-for="contactEmail"></span>
+                            <label for="contactEmail">Email</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="preferredContact" id="contactPhone" value="phone">
+                            <span class="radio-custom" data-for="contactPhone"></span>
+                            <label for="contactPhone">Phone</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="attachment">Attachment:</label>
+                    <div class="file-upload">
+                        <input type="file" id="attachment" accept=".pdf,.png,.jpg,.jpeg" style="display: none;">
+                        <label for="attachment" class="file-upload-btn">Choose File</label>
+                        <span id="fileName" class="file-name">No file chosen</span>
+                        <div id="fileError" class="file-error"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label></label>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="termsAgree" required>
+                        <span class="checkbox-custom" data-for="termsAgree"></span>
+                        <label for="termsAgree">I agree to the <a href="#" class="terms-link">terms and conditions</a></label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label></label>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+        </section>
+        
+        <section id="ticketsListView" class="content hidden">
+            <div class="table-controls">
+                <div class="control-wrapper">
+                    <div id="activeSortIndicator" class="active-indicator hidden">
+                        <span class="indicator-text">1</span>
+                        <span class="indicator-label">Sort</span>
+                        <button class="clear-indicator" id="clearSort">×</button>
+                    </div>
+                    <button id="sortBtn" class="control-btn">
+                        <img src="assets/media/sort-icon.png" alt="Sort" class="control-icon">&nbsp;&nbsp;Sort
+                    </button>
+                </div>
+                
+                <div class="control-wrapper">
+                    <div id="activeFilterIndicator" class="active-indicator hidden">
+                        <span class="indicator-text">1</span>
+                        <span class="indicator-label">Filter</span>
+                        <button class="clear-indicator" id="clearFilter">×</button>
+                    </div>
+                    <button id="filterBtn" class="control-btn">
+                        <img src="assets/media/filter-icon.png" alt="Filter" class="control-icon">&nbsp;&nbsp;Filter
+                    </button>
+                </div>
+                
+                <button id="refreshBtn" class="control-btn">
+                    <img src="assets/media/refresh-icon.png" alt="Refresh" class="control-icon">&nbsp;&nbsp;Refresh
+                </button>
+            </div>
+            
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th data-sort="id"> Ticket ID</th>
+                        <th data-sort="name">Raised by </th>
+                        <th data-sort="email">Ticket Details</th>
+                        <th data-sort="subject">Date Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketBody">
+                    <!-- table row data-->
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+
+
+<!-- Filter Modal -->
+<div id="filterModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h3 class="modal-title">Filter Table</h3>
+            <button class="close-modal">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="filter-container" id="filterContainer">
+                <div class="filter-row">
+                    <div class="filter-col">
+                        <label>Column:</label>
+                        <select class="form-control filter-field">
+                            <option value="" disabled selected>Select Column</option>
+                            <option value="id">Ticket ID</option>
+                            <option value="name">Raised by</option>
+                            <option value="subject">Ticket Details</option>
+                            <option value="createdDate">Date Created</option>
+                        </select>
+                    </div>
+                    <div class="filter-col">
+                        <label>Relation:</label>
+                        <select class="form-control filter-operator">
+                            <option value="" disabled selected>Select Relation</option>
+                            <option value="equals">Equals</option>
+                            <option value="contains">Contains</option>
+                            <option value="startsWith">Starts with</option>
+                            <option value="endsWith">Ends with</option>
+                            <option value="greaterThan">Greater than</option>
+                            <option value="lessThan">Less than</option>
+                        </select>
+                    </div>
+                    <div class="filter-col">
+                        <label>Filter Value:</label>
+                        <input type="text" class="form-control filter-value" placeholder="Enter Value">
+                    </div>
+                    <div class="filter-col remove-btn-col">
+                        <button type="button" class="remove-filter-btn">×</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="add-filter-btn">
+                <i>+</i> Add Filter
+            </button>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-actions">
+                <button type="button" class="modal-btn reset-btn">Reset Filter</button>
+                <button type="button" class="modal-btn confirm-btn" id="applyFilterBtn">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+  
+   <!-- Sort Modal -->
+<div id="sortModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h3 class="modal-title">Sort Table</h3>
+            <button class="close-modal">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="sort-container" id="sortContainer">
+                <div class="sort-row">
+                    <div class="sort-col">
+                        <label>Column:</label>
+                        <select class="form-control sort-field">
+                            <option value="" disabled selected>Select Column</option>
+                            <option value="id">Ticket ID</option>
+                            <option value="name">Raised by</option>
+                            <option value="subject">Ticket Details</option>
+                            <option value="createdDate">Date Created</option>
+                        </select>
+                    </div>
+                    <div class="sort-col">
+                        <label>Order:</label>
+                        <select class="form-control sort-direction">
+                            <option value="" disabled selected>Select Order</option>
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <div class="sort-col">
+                     
+                        <img  class="remove-sort-btn" src="assets/media/delete-icon.png" alt="Delete" class="action-icon">
+
+                    </div>
+                </div>
+            </div>
+            <button class="add-sort-btn">
+                <i>+</i> Add Sorter
+            </button>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-actions">
+                <button class="modal-btn reset-btn">Reset Sorting</button>
+                <button class="modal-btn confirm-btn">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- Ticket Details Modal -->
+    <div id="ticketDetailsModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Ticket Details</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body" id="ticketDetailsContent">
+                <!-- Ticket details -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn confirm-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+<script src="index.js"></script>
+<script src="shared-helpers.js"></script>
+<script src="session-storage.js"></script>
+<script src="memory-storage.js"></script>
+<script src="encryption-storage.js"></script>
+
+</body>
+</html>
+
+       
+
+
+
+

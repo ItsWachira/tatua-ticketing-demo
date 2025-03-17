@@ -1,0 +1,692 @@
+ /* Global Styles */
+ body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    background: #f5f5f5;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background: #2c1b3c;
+    padding: 15px 20px;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+}
+
+nav {
+    display: flex;
+ 
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+}
+
+.nav-btn.active {
+    color: #f39c12;
+    border-bottom: 2px solid #f39c12;
+}
+
+.content {
+    padding: 20px;
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Form Styles */
+.form-intro {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.form-group label {
+    width: 150px;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+.form-control {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea.form-control {
+    height: 100px;
+    resize: vertical;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #65558F;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+.radio-custom.selected::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #65558F;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.file-upload {
+    position: relative;
+}
+
+.file-upload-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-name {
+    display: inline-block;
+    margin-left: 10px;
+    color: #555;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 18px;
+    border: 2px solid #65558F;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    /* display: inline-block; */
+}
+
+.checkbox-custom.selected::after {
+    content: "✓";
+    position: absolute;
+    color: #fff;
+    background: #65558F;
+    font-size: 12px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.submit-btn {
+    background: #65558F;
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.terms-link {
+    color: #65558F;
+    text-decoration: underline;
+
+}
+
+/* Table Styles */
+.table-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    align-items: center;
+    color: #65558F;
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    color: #65558F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.control-btn i {
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* Ticket information styling */
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-info {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.secondary-info {
+    color: #777;
+    font-size: 12px;
+}
+/* Table Styling */
+th {
+    background: #fff;
+    color: #65558F;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #2c1b3c;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.ticket-meta {
+    font-size: 12px;
+    color: #777;
+    display: block;
+    margin-top: 3px;
+}
+
+.action-buttons {
+    display: flex;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5px;
+    color: #65558F;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background: #2c1b3c;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.detail-row {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    color: #333;
+}
+
+.attachment-preview {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.attachment-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border: 1px solid #ddd;
+}
+
+/* Filter Modal Styles */
+.filter-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    position: relative;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.filter-col {
+    margin-bottom: 10px;
+}
+
+.filter-col label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.remove-filter-btn {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.add-filter-btn {
+    background: transparent;
+    border: none;
+    color: #65558F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.add-filter-btn i {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+/* Common Modal Action Styles (if not already defined) */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.reset-btn {
+    background: #f5f5f5;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+.confirm-btn {
+    background: #65558F;
+    color: white;
+}
+
+.modal-btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+/* Sort Modal Styles */
+.sort-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+    padding: 5px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.sort-col {
+    margin-bottom: 10px;
+}
+
+.sort-col label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.remove-sort-btn {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.add-sort-btn {
+    background: transparent;
+    border: none;
+    color: #65558F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.add-sort-btn i {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.reset-btn {
+    background: #f5f5f5;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+.confirm-btn {
+    background: #65558F;
+    color: white;
+}
+
+.modal-btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+    }
+    
+    .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .table-controls {
+        flex-wrap: wrap;
+    }
+    
+    .control-btn {
+        margin-bottom: 10px;
+    }
+}
+
+/* Active filter/sort indicators */
+.active-indicator {
+    display: flex;
+    align-items: center;
+    background-color: #7E1913; /* Dark brown/red background */
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+    width: auto; /* Allow it to size based on content */
+}
+
+/* Control wrapper for positioning */
+.control-wrapper {
+    position: relative;
+    display: flex;
+    margin-right: 15px;
+}
+
+/* Hide the regular button when indicator is active */
+.control-wrapper .active-indicator:not(.hidden) ~ .control-btn {
+    display: none;
+}
+
+.indicator-text {
+    margin-right: 8px;
+    font-weight: bold;
+    color: white; /* Ensure text is white */
+}
+
+.indicator-label {
+    margin-right: 25px; /* Space for the X button */
+    color: white; /* Ensure text is white */
+}
+
+.clear-indicator {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    background: none;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+.clear-indicator:hover {
+    opacity: 1;
+}
+.control-btn {
+    background: transparent;
+    border: none;
+    color: #65558F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin-right: 15px;
+}
+
+.control-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.active-indicator.hidden {
+    display: none !important;
+}
+/* Make sure the content sections are properly shown/hidden */
+#raiseTicketView.hidden, 
+#ticketsListView.hidden {
+    display: none;
+}
+
+/* Ensure the table is always visible within its visible container */
+#ticketsListView:not(.hidden) table {
+    display: table;
+}
+
+
+.storage-selector {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.storage-selector label {
+    margin-right: 10px;
+    color: white;
+}
+
+.storage-selector select {
+    background: #3c2b4c;
+    color: white;
+    border: 1px solid #65558F;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+
+
+.control-btn.active {
+    background-color: #7E1913;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.control-btn.active img {
+    filter: brightness(0) invert(1); /* Makes the icon white */
+}
+
+.clear-indicator {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.underlined {
+    text-decoration: underline;
+    cursor: pointer;
+}
