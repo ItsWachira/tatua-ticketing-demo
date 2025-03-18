@@ -54,7 +54,7 @@ function arrayBufferToString(buffer) {
     
     return result;
 }
-// Function to decrypt data using AES-GCM
+// Function to decrypt data using AES
 async function decryptData(encryptedObj, key) {
     const decoder = new TextDecoder();
     const iv = new Uint8Array(atob(encryptedObj.iv).split("").map(c => c.charCodeAt(0)));
