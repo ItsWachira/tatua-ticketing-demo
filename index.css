@@ -210,7 +210,7 @@ input[type="checkbox"] {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
-    align-items: center;
+    /* align-items: center; */
     color: #65558F;
 }
 
@@ -221,12 +221,12 @@ input[type="checkbox"] {
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    /* margin-left: 1px; */
 }
 
-.control-btn i {
-    margin-right: 10px;
-}
+/* .control-btn i {
+    margin-right: 1px;
+} */
 
 table {
     width: 100%;
@@ -290,7 +290,7 @@ tr:hover {
     color: #65558F;
 }
 
-/* Modal Styles */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -373,7 +373,7 @@ tr:hover {
     border: 1px solid #ddd;
 }
 
-/* Filter Modal Styles */
+
 .filter-row {
     display: flex;
     flex-direction: row;
@@ -425,7 +425,6 @@ tr:hover {
     font-size: 16px;
 }
 
-/* Common Modal Action Styles (if not already defined) */
 .modal-actions {
     display: flex;
     justify-content: space-between;
@@ -450,7 +449,7 @@ tr:hover {
     border: none;
     font-weight: bold;
 }
-/* Sort Modal Styles */
+
 .sort-row {
     display: flex;
     flex-direction: row;
@@ -544,28 +543,28 @@ tr:hover {
     }
 }
 
-/* Active filter/sort indicators */
+
 .active-indicator {
     display: flex;
     align-items: center;
-    background-color: #7E1913; /* Dark brown/red background */
+    background-color: #7E1913; 
     color: white;
     border-radius: 4px;
     padding: 5px 10px;
     position: relative;
     font-size: 14px;
     cursor: pointer;
-    width: auto; /* Allow it to size based on content */
+    width: auto; 
 }
 
-/* Control wrapper for positioning */
+
 .control-wrapper {
     position: relative;
     display: flex;
     margin-right: 15px;
 }
 
-/* Hide the regular button when indicator is active */
+
 .control-wrapper .active-indicator:not(.hidden) ~ .control-btn {
     display: none;
 }
@@ -573,12 +572,12 @@ tr:hover {
 .indicator-text {
     margin-right: 8px;
     font-weight: bold;
-    color: white; /* Ensure text is white */
+    color: white; 
 }
 
 .indicator-label {
-    margin-right: 25px; /* Space for the X button */
-    color: white; /* Ensure text is white */
+    margin-right: 25px; 
+    color: white;
 }
 
 .clear-indicator {
@@ -619,13 +618,13 @@ tr:hover {
 .active-indicator.hidden {
     display: none !important;
 }
-/* Make sure the content sections are properly shown/hidden */
+
 #raiseTicketView.hidden, 
 #ticketsListView.hidden {
     display: none;
 }
 
-/* Ensure the table is always visible within its visible container */
+
 #ticketsListView:not(.hidden) table {
     display: table;
 }
@@ -661,7 +660,7 @@ tr:hover {
 }
 
 .control-btn.active img {
-    filter: brightness(0) invert(1); /* Makes the icon white */
+    filter: brightness(0) invert(1); 
 }
 
 .clear-indicator {
@@ -689,4 +688,176 @@ tr:hover {
 .underlined {
     text-decoration: underline;
     cursor: pointer;
+}
+
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.pagination-btn {
+    background-color: #65558F;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: background-color 0.2s;
+}
+
+.pagination-btn:hover {
+    background-color: #534879;
+}
+
+.pagination-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#pageInfo {
+    margin: 0 15px;
+    font-weight: bold;
+    color: #444;
+}
+
+
+.page-size-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 12px 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.page-size-input-group {
+    display: flex;
+    align-items: center;
+}
+
+.page-size-input-group label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+.page-size-input-group input {
+    width: 70px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.page-size-btn {
+    background-color: #65558F;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-left: 10px;
+}
+
+.page-size-btn:hover {
+    background-color: #534879;
+}
+
+.fetch-all-btn {
+    background-color: #2c1b3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.fetch-all-btn:hover {
+    background-color: #1a0f24;
+}
+
+.fetch-all-btn img {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+
+#peopleDataView th[data-sort] {
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#peopleDataView th[data-sort]::after {
+    content: "↕"; 
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 14px;
+}
+
+#peopleDataView th[data-sort].sort-asc::after {
+    content: "↑"; 
+    color: #65558F;
+}
+
+#peopleDataView th[data-sort].sort-desc::after {
+    content: "↓"; 
+    color: #65558F;
+}
+
+
+#peopleDataView th[data-sort]:hover {
+    background-color: #f0f0f0;
+}
+
+/* Quick sort dropdown */
+#quickSort {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #444;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#quickSort:focus {
+    outline: none;
+    border-color: #65558F;
+}
+
+
+.active-indicator .indicator-label {
+    cursor: pointer;
+    text-decoration: underline;
+    color: white;
+    transition: color 0.2s;
+}
+
+.active-indicator .indicator-label:hover {
+    color: #f0f0f0;
 }

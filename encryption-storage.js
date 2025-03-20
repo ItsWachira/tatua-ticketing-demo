@@ -41,7 +41,7 @@ async function encryptData(data, key) {
     }
 }
 
-// Helper function to safely convert ArrayBuffer to string
+
 function arrayBufferToString(buffer) {
     const bytes = new Uint8Array(buffer);
     let result = '';

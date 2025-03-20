@@ -4,20 +4,34 @@ let activeSorts = [];
 let encryptionKey;
 
 // View switching
+// Update the existing switchView function to handle the people view
 function switchView(view) {
     if (view === 'raiseTicket') {
         document.getElementById('raiseTicketView').style.display = 'block';
         document.getElementById('ticketsListView').style.display = 'none';
+        document.getElementById('peopleDataView').style.display = 'none';
         document.getElementById('showForm').classList.add('active');
         document.getElementById('showList').classList.remove('active');
-    } else {
+        document.getElementById('showPeople').classList.remove('active');
+    } else if (view === 'ticketsList') {
         document.getElementById('raiseTicketView').style.display = 'none';
         document.getElementById('ticketsListView').style.display = 'block';
+        document.getElementById('peopleDataView').style.display = 'none';
         document.getElementById('showForm').classList.remove('active');
         document.getElementById('showList').classList.add('active');
+        document.getElementById('showPeople').classList.remove('active');
         loadTickets();
+    } else if (view === 'people') {
+        document.getElementById('raiseTicketView').style.display = 'none';
+        document.getElementById('ticketsListView').style.display = 'none';
+        document.getElementById('peopleDataView').style.display = 'block';
+        document.getElementById('showForm').classList.remove('active');
+        document.getElementById('showList').classList.remove('active');
+        document.getElementById('showPeople').classList.add('active');
+        loadPeopleData(); 
     }
 }
+
 
 // File validation
 function validateFile(file) {
@@ -699,6 +713,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('fileName').textContent = fileName;
         document.getElementById('fileError').textContent = '';
     });
+    
+    // People view
+    document.getElementById('showPeople').addEventListener('click', () => switchView('people'));
     
     // Custom radio buttons
     document.querySelectorAll('.radio-custom').forEach(function(radio) {

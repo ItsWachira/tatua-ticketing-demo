@@ -1,15 +1,15 @@
-// In-memory storage for tickets
+
 const memoryTickets = [];
 
 
 
-// Store form data in memory
+
 function storeFormDataInMemory(ticket) {
     
     memoryTickets.push(ticket);
 }
 
-// Load tickets from memory
+
 function loadTicketsFromMemory() {
     
     let tickets = [...memoryTickets];
@@ -21,7 +21,7 @@ function loadTicketsFromMemory() {
     renderTicketsToTable(tickets);
 }
 
-// Handle form submission for memory storage
+
 async function handleMemoryStorageSubmit(event) {
     event.preventDefault();
     
@@ -39,7 +39,7 @@ async function handleMemoryStorageSubmit(event) {
     }
 }
 
-// Initialize memory storage functionality
+
 function initMemoryStorage() {
    
     const form = document.getElementById('ticketForm');

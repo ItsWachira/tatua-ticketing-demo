@@ -1,4 +1,4 @@
-// Create a ticket object from form data
+
 async function createTicketFromForm() {
     const file = document.getElementById('attachment').files[0];
     if (file) {
@@ -47,14 +47,14 @@ async function createTicketFromForm() {
     };
 }
 
-// Get existing tickets from all sources
+
 function getExistingTickets() {
     const localTickets = JSON.parse(localStorage.getItem('tickets') || '[]');
     const sessionTickets = JSON.parse(sessionStorage.getItem('tickets') || '[]');
     return [...localTickets, ...sessionTickets, ...memoryTickets];
 }
 
-// Apply filters and sorts to tickets
+
 function applyFiltersAndSorts(tickets, filters, sorts) {
     
     if (filters.length > 0) {
@@ -79,7 +79,7 @@ function applyFiltersAndSorts(tickets, filters, sorts) {
         });
     }
 
-    // Apply sorting
+  
     if (sorts.length > 0) {
         tickets.sort((a, b) => {
             for (const sort of sorts) {
@@ -102,7 +102,7 @@ function applyFiltersAndSorts(tickets, filters, sorts) {
     return tickets;
 }
 
-// Render tickets to the table
+
 function renderTicketsToTable(tickets) {
     const tableBody = document.getElementById('ticketBody');
     tableBody.innerHTML = '';

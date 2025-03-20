@@ -16,6 +16,7 @@
             <nav>
                 <button id="showForm" class="nav-btn active">Raise Ticket</button>
                 <button id="showList" class="nav-btn">Tickets List</button>
+                <button id="showPeople" class="nav-btn">People Data</button>
             </nav>
             <div class="storage-selector">
                 <label>Storage Type:</label>
@@ -116,7 +117,7 @@
                         <button class="clear-indicator" id="clearSort">×</button>
                     </div>
                     <button id="sortBtn" class="control-btn">
-                        <img src="assets/media/sort-icon.png" alt="Sort" class="control-icon">&nbsp;&nbsp;Sort
+                        <img src="assets/media/sort-icon.png" alt="Sort" class="control-icon">  Sort
                     </button>
                 </div>
                 
@@ -127,12 +128,12 @@
                         <button class="clear-indicator" id="clearFilter">×</button>
                     </div>
                     <button id="filterBtn" class="control-btn">
-                        <img src="assets/media/filter-icon.png" alt="Filter" class="control-icon">&nbsp;&nbsp;Filter
+                        <img src="assets/media/filter-icon.png" alt="Filter" class="control-icon">  Filter
                     </button>
                 </div>
                 
                 <button id="refreshBtn" class="control-btn">
-                    <img src="assets/media/refresh-icon.png" alt="Refresh" class="control-icon">&nbsp;&nbsp;Refresh
+                    <img src="assets/media/refresh-icon.png" alt="Refresh" class="control-icon">  Refresh
                 </button>
             </div>
             
@@ -151,6 +152,58 @@
                     <!-- table row data-->
                 </tbody>
             </table>
+        </section>
+        
+        <section id="peopleDataView" class="content hidden">
+            <div class="table-controls">
+                <div class="control-wrapper">
+                    <div id="peopleActiveSortIndicator" class="active-indicator hidden">
+                        <span class="indicator-text">1</span>
+                        <span class="indicator-label">Sort</span>
+                        <button class="clear-indicator" id="clearPeopleSort">×</button>
+                    </div>
+                    <button id="peopleSortBtn" class="control-btn">
+                        <img src="assets/media/sort-icon.png" alt="Sort" class="control-icon">  Sort
+                    </button>
+                </div>
+                
+                <div class="control-wrapper">
+                    <div id="peopleActiveFilterIndicator" class="active-indicator hidden">
+                        <span class="indicator-text">1</span>
+                        <span class="indicator-label">Filter</span>
+                        <button class="clear-indicator" id="clearPeopleFilter">×</button>
+                    </div>
+                    <button id="peopleFilterBtn" class="control-btn">
+                        <img src="assets/media/filter-icon.png" alt="Filter" class="control-icon">  Filter
+                    </button>
+                </div>
+                
+                <button id="peopleRefreshBtn" class="control-btn">
+                    <img src="assets/media/refresh-icon.png" alt="Refresh" class="control-icon">  Refresh
+                </button>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th data-sort="UserName">UserName</th>
+                        <th data-sort="FirstName">First Name</th>
+                        <th data-sort="LastName">Last Name</th>
+                        <th data-sort="MiddleName">Middle Name</th>
+                        <th data-sort="Gender">Gender</th>
+                        <th data-sort="Age">Age</th>
+                    </tr>
+                </thead>
+                <tbody id="peopleBody">
+                    <!-- People data will be loaded here -->
+                </tbody>
+            </table>
+            
+            <div class="pagination-controls">
+                <button id="prevPage" class="pagination-btn">Previous</button>
+                <span id="pageInfo">Page 1 of 1 (Total: 0 records)</span>
+                <button id="nextPage" class="pagination-btn">Next</button>
+            </div>
         </section>
     </div>
     
@@ -277,11 +330,116 @@
         </div>
     </div>
 
+    <!-- People Filter Modal -->
+    <div id="peopleFilterModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Filter People Data</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="filter-container" id="peopleFilterContainer">
+                    <div class="filter-row">
+                        <div class="filter-col">
+                            <label>Column:</label>
+                            <select class="form-control filter-field">
+                                <option value="" disabled selected>Select Column</option>
+                                <option value="UserName">UserName</option>
+                                <option value="FirstName">First Name</option>
+                                <option value="LastName">Last Name</option>
+                                <option value="MiddleName">Middle Name</option>
+                                <option value="Gender">Gender</option>
+                                <option value="Age">Age</option>
+                            </select>
+                        </div>
+                        <div class="filter-col">
+                            <label>Relation:</label>
+                            <select class="form-control filter-operator">
+                                <option value="" disabled selected>Select Relation</option>
+                                <option value="eq">Equals</option>
+                                <option value="contains">Contains</option>
+                                <option value="startswith">Starts with</option>
+                                <option value="endswith">Ends with</option>
+                                <option value="gt">Greater than</option>
+                                <option value="lt">Less than</option>
+                            </select>
+                        </div>
+                        <div class="filter-col">
+                            <label>Filter Value:</label>
+                            <input type="text" class="form-control filter-value" placeholder="Enter Value">
+                        </div>
+                        <div class="filter-col remove-btn-col">
+                            <button type="button" class="remove-filter-btn">×</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="add-filter-btn" id="addPeopleFilterBtn">
+                    <i>+</i> Add Filter
+                </button>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn reset-btn" id="resetPeopleFilterBtn">Reset Filter</button>
+                    <button type="button" class="modal-btn confirm-btn" id="applyPeopleFilterBtn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- People Sort Modal -->
+    <div id="peopleSortModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Sort People Data</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="sort-container" id="peopleSortContainer">
+                    <div class="sort-row">
+                        <div class="sort-col">
+                            <label>Column:</label>
+                            <select class="form-control sort-field">
+                                <option value="" disabled selected>Select Column</option>
+                                <option value="UserName">UserName</option>
+                                <option value="FirstName">First Name</option>
+                                <option value="LastName">Last Name</option>
+                                <option value="MiddleName">Middle Name</option>
+                                <option value="Gender">Gender</option>
+                                <option value="Age">Age</option>
+                            </select>
+                        </div>
+                        <div class="sort-col">
+                            <label>Order:</label>
+                            <select class="form-control sort-direction">
+                                <option value="" disabled selected>Select Order</option>
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <div class="sort-col">
+                            <img class="remove-sort-btn" src="assets/media/delete-icon.png" alt="Delete">
+                        </div>
+                    </div>
+                </div>
+                <button class="add-sort-btn" id="addPeopleSortBtn">
+                    <i>+</i> Add Sorter
+                </button>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-actions">
+                    <button class="modal-btn reset-btn" id="resetPeopleSortBtn">Reset Sorting</button>
+                    <button class="modal-btn confirm-btn" id="applyPeopleSortBtn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script src="index.js"></script>
 <script src="shared-helpers.js"></script>
 <script src="session-storage.js"></script>
 <script src="memory-storage.js"></script>
 <script src="encryption-storage.js"></script>
+<script src="API.js"></script>
 
 </body>
 </html>
